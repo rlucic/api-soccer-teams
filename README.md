@@ -1,5 +1,12 @@
 # api-soccer-teams
 
-to access the application: http://localhost:8080/api-soccer-teams/hi/the name you want
+Contains a simple REST API that deals with teams and players in the team
 
-Contains a simple app with a page/view created in Thymeleaf
+
+to access the application: http://localhost:8080/api-soccer-teams/api/teams
+
+Can access it with:
+- http://localhost:8080/api-soccer-teams/api/teams.json or
+- http://localhost:8080/api-soccer-teams/api/teams.xml (once the JAXB annotation is present on the model)
+
+
