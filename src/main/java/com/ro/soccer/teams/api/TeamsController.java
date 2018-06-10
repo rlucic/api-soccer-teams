@@ -1,39 +1,32 @@
 package com.ro.soccer.teams.api;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ro.soccer.teams.model.Team;
-import com.ro.soccer.teams.model.Player;
+import com.ro.soccer.teams.dao.TeamDao;
 
 
 @RestController
 @RequestMapping(path="/api")
 public class TeamsController {
 
-	private Team team;
+	@Autowired
+	private TeamDao teamDao;
 	
-	@PostConstruct
-	public void init(){
-		Set<Player> players = new HashSet<Player>();
-		
-		players.add(new Player("Hagi", "Mid field"));
-		players.add(new Player("Popescu", "Defender"));
-		players.add(new Player("Mutu", "Atacker"));
-		
-		team = new Team("Bucharest", "Steaua", players);
+	@RequestMapping(path="/teams/{name}")
+	public Team getTeam(@PathVariable String name){
+		return teamDao.findByName(name);
 	}
 	
-	@RequestMapping(path="/team")
-	public Team getTeam(){
-		return team;
+	@RequestMapping(path="/teams")
+	public List<Team> getAll(){
+		return teamDao.findAll();
 	}
+	
 	
 }
