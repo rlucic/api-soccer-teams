@@ -18,7 +18,7 @@ public class GenericApiResponseFilter extends GenericFilterBean {
 
 		HttpServletResponse httpResponse = (HttpServletResponse)response;
 		httpResponse.addHeader("version", "1.0");
-		System.out.println("Inside the special fileter on the response path");
+		System.out.println("Inside the special filter on the response path");
 		chain.doFilter(request, response);
 	}
 

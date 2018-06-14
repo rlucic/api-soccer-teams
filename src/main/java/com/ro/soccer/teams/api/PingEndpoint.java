@@ -1,5 +1,7 @@
 package com.ro.soccer.teams.api;
 
+import java.time.LocalDateTime;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,9 @@ public class PingEndpoint {
 		headers.add("Version", "1.0");
 		headers.add("PING_RESPONSE_HEADER", "P_R_H_VALUE");
 		
-		ResponseEntity<String> resp = new ResponseEntity<String>("pong", headers, HttpStatus.OK);
+		final LocalDateTime ldt = LocalDateTime.now();
+		
+		ResponseEntity<String> resp = new ResponseEntity<String>("pong @" + ldt, headers, HttpStatus.OK);
 				//new ResponseEntity<String>("Pong", HttpStatus.OK);
 		return resp;
 	}
