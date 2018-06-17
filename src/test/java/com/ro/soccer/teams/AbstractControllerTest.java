@@ -24,7 +24,7 @@ public abstract class AbstractControllerTest extends AbstractTestClass {
 	@Autowired
 	protected WebApplicationContext webApplicationContext;
 	
-	//makes the MockMvc aware of all our app components by building it with the web app context object
+	//makes the MockMvc aware of all our application components by building it with the web application context object
 	protected void setUp(){
 		mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 		

@@ -3,8 +3,12 @@ package com.ro.soccer.teams.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Entity
+@Table(name="player")
 public class Player {
 
 	@Id
