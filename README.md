@@ -13,3 +13,8 @@ Can access it with:
 The actuator has security disabled and can be accessed at:
 - http://localhost:8080/api-soccer-teams/actuator/.....
 
+Swagger documentation
+for raw JSON: 
+- GET: http://<hostname>:<port>/api-soccer-teams/v2/api-docs
+- GET: http://localhost:8080/api-soccer-teams/swagger-ui.html
+
