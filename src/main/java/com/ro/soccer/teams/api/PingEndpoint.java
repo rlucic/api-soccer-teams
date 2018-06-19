@@ -7,9 +7,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
+@Api
 public class PingEndpoint {
 	
 	@Value("${server.port}")
@@ -18,7 +25,13 @@ public class PingEndpoint {
 	@Value("${app.major.minor.version}")
 	private String version;
 	
-	@RequestMapping(value="/ping")
+	@ApiOperation(value="Used to check if the API is up and running", response=String.class)
+	@ApiResponses(value={
+		@ApiResponse(code=200, message="Application is up and running"),
+		@ApiResponse(code=500, message="Application didn't start properly")
+		}
+	)
+	@RequestMapping(value="/ping", method=RequestMethod.GET)
 	public ResponseEntity<String> ping(){
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Version", version);

@@ -14,18 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ro.soccer.teams.model.Team;
 import com.ro.soccer.teams.service.TeamsService;
-import com.ro.soccer.teams.dao.TeamDao;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 
 @RestController
 @RequestMapping(path="/api")
+@Api()
 public class TeamsController {
 
 	
 	@Autowired
 	private TeamsService service;
 	
-	@RequestMapping(path="/teams/{name}")
+	@ApiOperation(value="Used retrieve a team by name", response=Team.class)
+	@ApiResponses(value={
+		@ApiResponse(code=200, message="Success"),
+		@ApiResponse(code=404, message="Team not found")
+		}
+	)
+	@RequestMapping(path="/teams/{name}", method=RequestMethod.GET)
 	public ResponseEntity<Team> getTeam(@PathVariable String name){
 		ResponseEntity<Team> resp;
 		Team t = service.getTeamByName(name);
@@ -37,7 +48,13 @@ public class TeamsController {
 		return resp;
 	}
 	
-	@RequestMapping(path="/teams")
+	@ApiOperation(value="Used retrieve all teams", response=Team.class)
+	@ApiResponses(value={
+		@ApiResponse(code=200, message="Success"),
+		@ApiResponse(code=400, message="Bad request")
+		}
+	)
+	@RequestMapping(path="/teams", method=RequestMethod.GET)
 	public ResponseEntity<List<Team>> getAll(){
 		
 		List<Team> teamList = service.getAll();
@@ -46,7 +63,16 @@ public class TeamsController {
 		return resp;
 	}
 	
-	@RequestMapping(path="/teams", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value="Used add a new soccer team")
+	@ApiResponses(value={
+		@ApiResponse(code=201, message="Created"),
+		@ApiResponse(code=400, message="Bad request submitted")
+		}
+	)
+	@RequestMapping(path="/teams", 
+			method=RequestMethod.POST, 
+			produces=MediaType.APPLICATION_JSON_VALUE, 
+			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Team> addTeam(@RequestBody Team t){
 		System.out.println("into the addTeam endpoint.....");
 		ResponseEntity<Team> resp;

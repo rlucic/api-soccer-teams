@@ -11,6 +11,11 @@ import javax.persistence.Table;
 import javax.persistence.CascadeType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(
+		description="Model POJO describing a soccer team. Persisted in the 'team' table.",
+		value="Team")
 @XmlRootElement
 @Entity
 @Table(name="team")

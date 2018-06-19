@@ -26,13 +26,27 @@ public class SoccerSwaggerConfiguration {
 	public Docket api(){
 		
 	    return new Docket(DocumentationType.SWAGGER_2)  
+	    		.groupName("mainAPI")
 	            .select()
 	            .apis(RequestHandlerSelectors.basePackage("com.ro.soccer.teams.api"))
-	            .paths(PathSelectors.ant("/*"))
+	            .paths(PathSelectors.ant("/**"))
 	            .build()
 	            .apiInfo(apiInfo());
 		
 	}
+	
+//	@Bean
+//	public Docket apiPing(){
+//		
+//	    return new Docket(DocumentationType.SWAGGER_2)
+//	    		.groupName("pingEndpoint")
+//	            .select()
+//	            .apis(RequestHandlerSelectors.basePackage("com.ro.soccer.teams.api"))
+//	            .paths(PathSelectors.ant("/ping"))
+//	            .build()
+//	            .apiInfo(apiInfo());
+//		
+//	}
 	
     private ApiInfo apiInfo() {
     	
