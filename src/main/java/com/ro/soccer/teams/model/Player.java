@@ -2,6 +2,7 @@ package com.ro.soccer.teams.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,7 +18,7 @@ import io.swagger.annotations.ApiModel;
 public class Player {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	Long id;
 	String name;
 	String position;

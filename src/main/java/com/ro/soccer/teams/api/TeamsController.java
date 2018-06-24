@@ -69,7 +69,7 @@ public class TeamsController {
 		@ApiResponse(code=400, message="Bad request submitted")
 		}
 	)
-	@RequestMapping(path="/teams", 
+	@RequestMapping(path="/teams",
 			method=RequestMethod.POST, 
 			produces=MediaType.APPLICATION_JSON_VALUE, 
 			consumes=MediaType.APPLICATION_JSON_VALUE)

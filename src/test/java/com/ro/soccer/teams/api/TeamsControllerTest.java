@@ -7,7 +7,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ro.soccer.teams.AbstractControllerTest;
 import com.ro.soccer.teams.model.Player;
 import com.ro.soccer.teams.model.Team;
